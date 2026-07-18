@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# Happy Meal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing website for **Happy Meal Pvt. Ltd.**, a corporate and event catering company based in
+Bengaluru. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+**Live site:** https://ksatvasanthakumar.github.io/HappyMeals/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Pages
 
-## React Compiler
+- **Home** — hero carousel, service overview (Corporate Catering, Event Catering, Cafeteria
+  Management), mission/vision, client showcase, and a call-to-action.
+- **About** — brand story, stats, and photo gallery.
+- **Leadership** — founding story and leadership profiles.
+- **Contact** — inquiry form for catering quotes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) for dev server and bundling
+- [Tailwind CSS v4](https://tailwindcss.com/) (CSS-first, via `@tailwindcss/vite`)
+- [React Router](https://reactrouter.com/) for client-side routing
+- [Framer Motion](https://www.framer.com/motion/) for animation
+- [React Hook Form](https://react-hook-form.com/) for the contact form
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command           | Description                                             |
+| ----------------- | -------------------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server with HMR                        |
+| `npm run build`   | Type-check (`tsc -b`) and produce a production build      |
+| `npm run lint`    | Run ESLint over the project                               |
+| `npm run preview` | Serve the production build locally                        |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Design tokens
 
-```
+Colors, spacing, radii, and typography are defined as CSS custom properties in
+[`src/themes/happymeals-token.css`](src/themes/happymeals-token.css) and consumed throughout the app
+via Tailwind's arbitrary-value syntax (e.g. `bg-(--color-primary)`).
+
+## Deployment
+
+The site auto-deploys to GitHub Pages via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+on every push to `main`. The build runs from the `HappyMeals/` project folder and publishes to the
+`ksatvasanthakumar.github.io/HappyMeals/` subpath, so:
+
+- `vite.config.ts` sets `base: '/HappyMeals/'`
+- `main.tsx` sets the router `basename` to `/HappyMeals`
+- `public/404.html` implements the [SPA GitHub Pages redirect trick](https://github.com/rafgraph/spa-github-pages)
+  so direct links to client-side routes (e.g. `/about`) work correctly
