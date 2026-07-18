@@ -19,7 +19,7 @@ function ChefLoaderIcon({ progress }: ChefLoaderIconProps) {
       viewBox="0 0 140 150"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-24 sm:w-28 md:w-32"
+      className="h-auto w-[clamp(5rem,26vw,8rem)]"
     >
       <g transform="translate(20, 0)">
         {steamPaths.map((d, i) => (

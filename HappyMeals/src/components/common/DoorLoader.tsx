@@ -32,17 +32,17 @@ function DoorLoader({ onComplete }: DoorLoaderProps) {
     <AnimatePresence onExitComplete={onComplete}>
       {!doorsOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-(--color-primary) via-[color-mix(in_srgb,var(--color-primary)_55%,var(--color-secondary))] to-(--color-secondary) px-4 sm:gap-6"
+          className="fixed inset-0 z-[100] flex h-[100dvh] w-screen flex-col items-center justify-center gap-3 overflow-y-auto bg-gradient-to-br from-(--color-primary) via-[color-mix(in_srgb,var(--color-primary)_55%,var(--color-secondary))] to-(--color-secondary) px-4 py-6 sm:gap-6"
           exit={{ y: '-100%' }}
           transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
         >
           <ChefLoaderIcon progress={progress} />
 
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-(length:--font-size-xs) uppercase tracking-[0.3em] sm:text-(length:--font-size-sm) sm:tracking-[0.35em] text-(--color-accent)">
+          <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+            <span className="text-[clamp(0.65rem,2.5vw,0.875rem)] uppercase tracking-[0.25em] text-(--color-accent) sm:tracking-[0.35em]">
               Welcome to
             </span>
-            <span className="text-(length:--font-size-2xl) font-(--font-weight-semibold) font-(family-name:--font-family-heading) tracking-wide text-(--color-text-on-primary) sm:text-(length:--font-size-3xl)">
+            <span className="text-[clamp(1.25rem,6vw,2.5rem)] font-(--font-weight-semibold) font-(family-name:--font-family-heading) tracking-wide text-(--color-text-on-primary)">
               Happy Meal
             </span>
           </div>
