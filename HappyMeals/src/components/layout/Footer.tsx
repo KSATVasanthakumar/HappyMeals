@@ -51,7 +51,7 @@ function Footer() {
               Contact Us
             </h3>
             <div className="flex flex-col items-center gap-1 text-(length:--font-size-sm) text-(--color-text-on-primary)/80 sm:items-start">
-              <p className="m-0">Email - contact@happyplates.co.in</p>
+              <p className="m-0">Email - contact@happymeals.co.in</p>
               <p className="m-0 mt-2">Happy Meal Pvt. Ltd.</p>
               <p className="m-0">31st Main Road, 2nd North Street, Near Beach Parking,</p>
               <p className="m-0">Bangalore - 560037</p>
