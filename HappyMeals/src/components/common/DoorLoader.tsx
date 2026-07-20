@@ -43,7 +43,7 @@ function DoorLoader({ onComplete }: DoorLoaderProps) {
               Welcome to
             </span>
             <span className="text-[clamp(1.25rem,6vw,2.5rem)] font-(--font-weight-semibold) font-(family-name:--font-family-heading) tracking-wide text-(--color-text-on-primary)">
-              Happy Meal
+              Happy Meals
             </span>
           </div>
         </motion.div>

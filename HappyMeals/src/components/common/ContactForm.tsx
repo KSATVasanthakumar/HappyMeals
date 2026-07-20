@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form'
 interface FormValues {
   name: string
   email: string
-  countryCode: string
   phone: string
   category: string
   otherCategory: string
   pax: string
   eventType: string
+  eventDate: string
   address: string
 }
 
@@ -18,14 +18,15 @@ const MAX_PAX = 100000
 const MAX_DESCRIPTION_WORDS = 1500
 const MAX_ADDRESS_LENGTH = 500
 
-const countryCodes = [
-  { code: '+91', flag: '🇮🇳', label: 'India' },
-  { code: '+1', flag: '🇺🇸', label: 'USA' },
-  { code: '+44', flag: '🇬🇧', label: 'UK' },
-  { code: '+971', flag: '🇦🇪', label: 'UAE' },
-  { code: '+65', flag: '🇸🇬', label: 'Singapore' },
-  { code: '+61', flag: '🇦🇺', label: 'Australia' },
-]
+function todayISODate() {
+  return new Date().toISOString().split('T')[0]
+}
+
+function maxEventISODate() {
+  const date = new Date()
+  date.setFullYear(date.getFullYear() + 5)
+  return date.toISOString().split('T')[0]
+}
 
 function countWords(value: string) {
   return value.trim() ? value.trim().split(/\s+/).length : 0
@@ -47,12 +48,12 @@ function ContactForm() {
     defaultValues: {
       name: '',
       email: '',
-      countryCode: '+91',
       phone: '',
       category: '',
       otherCategory: '',
       pax: '',
       eventType: '',
+      eventDate: '',
       address: '',
     },
   })
@@ -134,29 +135,16 @@ function ContactForm() {
         <label htmlFor="phone" className="text-(length:--font-size-xs) font-(--font-weight-semibold) text-(--color-text-primary)">
           Phone Number <span className="text-red-600">*</span>
         </label>
-        <div className="flex gap-2">
-          <select
-            id="countryCode"
-            {...register('countryCode')}
-            className={`${inputBaseClasses} w-20 shrink-0 px-1.5 border-(--color-border)`}
-          >
-            {countryCodes.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.flag} {c.code}
-              </option>
-            ))}
-          </select>
-          <input
-            id="phone"
-            type="tel"
-            maxLength={12}
-            {...register('phone', {
-              required: 'Phone number is required.',
-              pattern: { value: PHONE_REGEX, message: 'Enter a valid phone number (7-12 digits).' },
-            })}
-            className={`${inputBaseClasses} flex-1 ${errors.phone ? 'border-red-500' : 'border-(--color-border)'}`}
-          />
-        </div>
+        <input
+          id="phone"
+          type="tel"
+          maxLength={12}
+          {...register('phone', {
+            required: 'Phone number is required.',
+            pattern: { value: PHONE_REGEX, message: 'Enter a valid phone number (7-12 digits).' },
+          })}
+          className={`${inputClasses} ${errors.phone ? 'border-red-500' : 'border-(--color-border)'}`}
+        />
         {errors.phone && <span className="text-(length:--font-size-xs) text-red-600">{errors.phone.message}</span>}
       </div>
 
@@ -214,6 +202,31 @@ function ContactForm() {
         />
       </div>
 
+      <div className="flex flex-col gap-1">
+        <label htmlFor="eventDate" className="text-(length:--font-size-xs) font-(--font-weight-semibold) text-(--color-text-primary)">
+          Event Date <span className="text-red-600">*</span>
+        </label>
+        <input
+          id="eventDate"
+          type="date"
+          min={todayISODate()}
+          max={maxEventISODate()}
+          {...register('eventDate', {
+            required: 'Event date is required.',
+            validate: (value) => {
+              if (!value) return true
+              if (value < todayISODate()) return 'Event date cannot be in the past.'
+              if (value > maxEventISODate()) return 'Event date must be within the next 5 years.'
+              return true
+            },
+          })}
+          className={`${inputClasses} ${errors.eventDate ? 'border-red-500' : 'border-(--color-border)'}`}
+        />
+        {errors.eventDate && (
+          <span className="text-(length:--font-size-xs) text-red-600">{errors.eventDate.message}</span>
+        )}
+      </div>
+
       {category === 'Other' && (
         <div className="flex flex-col gap-1 sm:col-span-3">
           <label htmlFor="otherCategory" className="text-(length:--font-size-xs) font-(--font-weight-semibold) text-(--color-text-primary)">
@@ -261,13 +274,20 @@ function ContactForm() {
         {errors.address && <span className="text-(length:--font-size-xs) text-red-600">{errors.address.message}</span>}
       </div>
 
-      <button
-        type="submit"
-        disabled={!isValid}
-        className="mt-2 rounded-(--radius-full) bg-(--color-primary) px-6 py-3 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-text-on-primary) transition-colors hover:enabled:bg-(--color-secondary) disabled:cursor-not-allowed disabled:opacity-50 sm:col-span-3"
-      >
-        Get a Quote
-      </button>
+      <div className="flex flex-col items-start gap-1 sm:col-span-3">
+        <button
+          type="submit"
+          disabled={!isValid}
+          className="rounded-(--radius-full) bg-(--color-primary) px-6 py-3 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-text-on-primary) transition-colors hover:enabled:bg-(--color-secondary) disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Get a Quote
+        </button>
+        {!isValid && (
+          <span className="text-(length:--font-size-xs) text-(--color-text-secondary)">
+            Please fill in all required fields (marked with *) correctly to enable this button.
+          </span>
+        )}
+      </div>
     </form>
   )
 }

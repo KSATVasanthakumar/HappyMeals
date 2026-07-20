@@ -1,6 +1,6 @@
-# Happy Meal
+# Happy Meals
 
-Marketing website for **Happy Meal Pvt. Ltd.**, a corporate and event catering company based in
+Marketing website for **Happy Meals Pvt. Ltd.**, a corporate and event catering company based in
 Bengaluru. Built with React, TypeScript, and Vite.
 
 **Live site:** https://ksatvasanthakumar.github.io/HappyMeals/

@@ -23,7 +23,7 @@ const fadeRight = {
   visible: { opacity: 1, x: 0 },
 }
 
-const tagline = 'Culinary artistry, cultural richness, seasonal freshness.'
+const tagline = 'Nutrition-first menus, culinary artistry, seasonal freshness.'
 
 function CalendarIcon() {
   return (
@@ -59,9 +59,9 @@ const stats = [
 ]
 
 const gallery = [
-  { src: galleryImg1, alt: 'Happy Meal catering setup' },
-  { src: galleryImg2, alt: 'Happy Meal plated dish' },
-  { src: galleryImg3, alt: 'Happy Meal event service' },
+  { src: galleryImg1, alt: 'Happy Meals catering setup' },
+  { src: galleryImg2, alt: 'Happy Meals plated dish' },
+  { src: galleryImg3, alt: 'Happy Meals event service' },
 ]
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -127,23 +127,23 @@ function About() {
               Our Story
             </span>
             <h2 className="text-(length:--font-size-2xl) font-(--font-weight-bold) font-(family-name:--font-family-heading) text-(--color-text-primary) sm:text-(length:--font-size-3xl)">
-              How Happy Meal Began
+              How Happy Meals Began
             </h2>
             <div className="h-px w-16 bg-(--color-accent)" />
             <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              Happy Meal was founded in Bengaluru by a small team who believed corporate catering
-              shouldn't feel like an afterthought. What began as a single kitchen serving nearby offices
-              quickly grew into a name trusted for weddings, corporate luncheons, and milestone
-              celebrations across the city. From day one, the promise was simple — fresh, seasonal
-              ingredients, menus that could adapt to any occasion, and a level of consistency that
-              scales from ten guests to a thousand. That founding promise still guides every dish we
-              plate today.
+              Happy Meals was founded in Bengaluru by a small team who believed catering shouldn't
+              come at the cost of nutrition. What began as a single kitchen serving nearby schools
+              and offices quickly grew into a name trusted for weddings, corporate luncheons, and
+              milestone celebrations across the city. From day one, the promise was simple — fresh,
+              seasonal ingredients, thoughtfully balanced menus, and a level of consistency that
+              scales from ten guests to a thousand. That founding promise still guides every dish
+              we plate today.
             </p>
           </motion.div>
 
           <motion.img
             src={storyImg}
-            alt="Happy Meal founding team preparing a catering spread"
+            alt="Happy Meals founding team preparing a catering spread"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -187,7 +187,7 @@ function About() {
         <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-10">
           <motion.img
             src={splitImg}
-            alt="Happy Meal kitchen at work"
+            alt="Happy Meals kitchen at work"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -208,16 +208,17 @@ function About() {
               In The Kitchen
             </span>
             <h2 className="text-(length:--font-size-2xl) font-(--font-weight-bold) font-(family-name:--font-family-heading) text-(--color-text-primary) sm:text-(length:--font-size-3xl)">
-              Rooted in Craft, Built to Scale
+              Rooted in Nutrition, Built to Scale
             </h2>
             <div className="h-px w-16 bg-(--color-accent)" />
             <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              As a dedicated corporate and event catering service, every Happy Meal kitchen treats a
-              hundred-cover banquet with the same care as a single plate. Our chefs source seasonally,
-              plate consistently, and train relentlessly, so the same dish that impresses at a
-              ten-person breakfast meeting still lands perfectly at a five-hundred-guest wedding. It's
-              this discipline, built into our catering operations from day one, that lets us grow
-              without ever cutting corners on taste.
+              As a dedicated nutrition-first catering service, every Happy Meals kitchen treats a
+              hundred-cover banquet with the same care as a single plate. Our chefs source
+              seasonally, balance every menu around whole grains, fresh produce, and lean proteins,
+              and train relentlessly, so the same wholesome dish that impresses at a ten-person
+              breakfast meeting still lands perfectly at a five-hundred-guest wedding. It's this
+              discipline, built into our catering operations from day one, that lets us grow
+              without ever cutting corners on health or taste.
             </p>
           </motion.div>
         </div>

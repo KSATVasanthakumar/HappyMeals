@@ -30,7 +30,7 @@ function Leadership() {
         </h2>
         <div className="h-px w-16 bg-(--color-accent)" />
         <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-          Happy Meal began with a simple observation: corporate catering had settled for convenience
+          Happy Meals began with a simple observation: corporate catering had settled for convenience
           over craft. Our founders, who had spent years in professional kitchens and event management,
           believed that a business lunch or a milestone celebration deserved the same care as a
           fine-dining table. What started as a small kitchen serving a handful of offices around
@@ -38,7 +38,7 @@ function Leadership() {
           premium. Every dish was built on two commitments: fresh, seasonal ingredients and menus that
           could flex to any occasion, from a quiet breakfast meeting to a five-hundred-guest wedding.
           Over time, that philosophy attracted a small, dedicated team of chefs, event coordinators,
-          and service staff who shared the same obsession with detail. Today, Happy Meal serves
+          and service staff who shared the same obsession with detail. Today, Happy Meals serves
           corporate offices, private events, and celebrations across the city, but the founding idea
           has never changed — food crafted with culinary artistry, cultural richness, and seasonal
           freshness, delivered with the reliability a business can count on and the warmth a
@@ -58,7 +58,7 @@ function Leadership() {
           >
             <img
               src={ceoImg}
-              alt="Founder and CEO of Happy Meal"
+              alt="Founder and CEO of Happy Meals"
               className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
             />
             <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
@@ -70,13 +70,13 @@ function Leadership() {
               </span>
             </div>
             <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
-              Mr. X founded Happy Meal with a vision to bring restaurant-grade hospitality into
+              Mr. X founded Happy Meals with a vision to bring restaurant-grade hospitality into
               everyday corporate dining and life's biggest celebrations. With a background spanning
               hospitality management and large-scale event operations, he built the company around a
               simple belief: consistency and warmth should never be casualties of scale. He has
               personally overseen the company's growth from a single-kitchen operation to a trusted
               partner for corporate offices, wedding parties, and private clients across Bengaluru.
-              Under his leadership, Happy Meal has invested heavily in sourcing, food safety, and
+              Under his leadership, Happy Meals has invested heavily in sourcing, food safety, and
               training, ensuring every plate served reflects the same standard whether it's for ten
               guests or a thousand. Mr. X remains closely involved in menu direction and client
               relationships, believing that a founder's attention to detail is what keeps a hospitality
@@ -94,7 +94,7 @@ function Leadership() {
           >
             <img
               src={chefImg}
-              alt="Head Chef of Happy Meal"
+              alt="Head Chef of Happy Meals"
               className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
             />
             <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
@@ -106,7 +106,7 @@ function Leadership() {
               </span>
             </div>
             <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
-              Chef Y leads the Happy Meal kitchen, shaping every menu with a blend of classic Indian
+              Chef Y leads the Happy Meals kitchen, shaping every menu with a blend of classic Indian
               technique and contemporary global influence. Trained in professional kitchens before
               moving into large-format catering, she brings a chef's precision to menus that must
               perform at scale without losing their soul. She works closely with the sourcing team to

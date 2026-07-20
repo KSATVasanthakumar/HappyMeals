@@ -6,6 +6,11 @@
   before considering the task done. Use the preview tools to check all three breakpoints (e.g. 375px
   mobile, 768px tablet, 1280px+ desktop) — don't just check desktop and assume responsive classes
   work. This applies to new features, layout tweaks, color/typography changes, and bug fixes alike.
+- **All page copy must tie back to the "Nutrition and Healthy" theme.** Headings, subheadings, and
+  body copy across pages (Home, About, Contact, etc.) should reinforce Happy Meals' nutrition-first,
+  healthy-catering positioning rather than generic catering/event language — e.g. the Contact page
+  heading is "Let's Plan a Nutritious, Healthy Menu Together" instead of a generic "Request a
+  Catering Quote". Keep new or edited copy consistent with this theme.
 
 ## Project state
 

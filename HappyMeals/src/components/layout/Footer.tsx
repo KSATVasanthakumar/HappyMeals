@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import SocialIcons from '../common/SocialIcons'
+import logo from '../../assets/images/Logo.png'
 
 const links = [
   { label: 'Home', to: '/' },
@@ -13,9 +14,13 @@ function Footer() {
     <footer className="bg-(--color-primary) px-4 py-10 text-(--color-text-on-primary) sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-10">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <span className="text-(length:--font-size-lg) font-(--font-weight-bold) font-(family-name:--font-family-heading) text-(--color-text-on-primary)">
-            Happy Meal
-          </span>
+          <NavLink to="/" className="rounded-(--radius-lg) bg-(--color-text-on-primary) p-2">
+            <img
+              src={logo}
+              alt="Happy Meals - Nutrition & Healthy"
+              className="h-14 w-auto sm:h-16"
+            />
+          </NavLink>
           <NavLink
             to="/contact"
             className="rounded-(--radius-full) bg-(--color-accent) px-5 py-2 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-primary) no-underline transition-colors hover:bg-(--color-text-on-primary)"
@@ -36,9 +41,24 @@ function Footer() {
                     <NavLink
                       to={link.to}
                       end={link.to === '/'}
-                      className="text-(length:--font-size-sm) text-(--color-text-on-primary)/80 no-underline transition-colors hover:text-(--color-accent)"
+                      className={({ isActive }) =>
+                        `flex items-center gap-2 text-(length:--font-size-sm) no-underline transition-colors hover:text-(--color-accent) ${
+                          isActive
+                            ? 'text-(--color-accent) font-(--font-weight-semibold)'
+                            : 'text-(--color-text-on-primary)/80'
+                        }`
+                      }
                     >
-                      {link.label}
+                      {({ isActive }) => (
+                        <>
+                          <span
+                            className={`h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500 transition-opacity ${
+                              isActive ? 'opacity-100' : 'opacity-0'
+                            }`}
+                          />
+                          {link.label}
+                        </>
+                      )}
                     </NavLink>
                   </li>
                 ))}
@@ -52,9 +72,11 @@ function Footer() {
             </h3>
             <div className="flex flex-col items-center gap-1 text-(length:--font-size-sm) text-(--color-text-on-primary)/80 sm:items-start">
               <p className="m-0">Email - contact@happymeals.co.in</p>
-              <p className="m-0 mt-2">Happy Meal Pvt. Ltd.</p>
-              <p className="m-0">31st Main Road, 2nd North Street, Near Beach Parking,</p>
-              <p className="m-0">Bangalore - 560037</p>
+              <p className="m-0 mt-2">Happy Meals Pvt. Ltd.</p>
+              <p className="m-0">435, BOOHBCS 2nd Stage, 2nd Block,</p>
+              <p className="m-0">Opp. Doddakallasandra Cricket Ground,</p>
+              <p className="m-0">Narayana Nagar, Doddakallasandra,</p>
+              <p className="m-0">Bangalore - 560062</p>
               <p className="m-0">CIN - U55209KAXXXXXXXXXXXX</p>
               <p className="m-0 mt-2">Contact Person - Mr. X</p>
               <p className="m-0">Email - MrX@happymeals.co.in</p>
@@ -72,7 +94,7 @@ function Footer() {
         <div className="h-px w-full bg-(--color-text-on-primary)/15" />
 
         <p className="text-center text-(length:--font-size-xs) text-(--color-text-on-primary)/70">
-          © {new Date().getFullYear()} Happy Meal. All rights reserved.
+          © {new Date().getFullYear()} Happy Meals. All rights reserved.
         </p>
       </div>
     </footer>

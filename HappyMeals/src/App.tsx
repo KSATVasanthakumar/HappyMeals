@@ -4,6 +4,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import DoorLoader from './components/common/DoorLoader'
 import GoToTop from './components/common/GoToTop'
+import ScrollToTop from './components/common/ScrollToTop'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       {loading && <DoorLoader onComplete={() => setLoading(false)} />}
+      <ScrollToTop />
       <Header />
       <Suspense fallback={null}>
         <Routes>

@@ -8,23 +8,23 @@ import slideImg4 from '../../assets/images/pic-8.jpg'
 const slides = [
   {
     image: slideImg1,
-    quote: 'Where every plate tells a story of flavor and finesse.',
-    author: 'Executive Chef, Happy Meal',
+    quote: 'Every plate is planned to nourish first, and delight always.',
+    author: 'Executive Chef, Happy Meals',
   },
   {
     image: slideImg2,
-    quote: 'Hospitality is our recipe; freshness is our promise.',
-    author: 'Head of Catering, Happy Meal',
+    quote: 'Fresh, whole ingredients; balanced nutrition, our promise.',
+    author: 'Head of Catering, Happy Meals',
   },
   {
     image: slideImg3,
-    quote: 'From boardrooms to banquets, we serve every occasion with care.',
-    author: 'Founder, Happy Meal',
+    quote: 'From school cafeterias to banquets, we serve healthy at every scale.',
+    author: 'Founder, Happy Meals',
   },
   {
     image: slideImg4,
-    quote: 'Corporate lunches to grand celebrations, catered with the same care.',
-    author: 'Head Chef, Happy Meal',
+    quote: 'Corporate lunches to grand celebrations, catered with the same care for your health.',
+    author: 'Head Chef, Happy Meals',
   },
 ]
 
@@ -62,12 +62,12 @@ function HeroCarousel() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-            className="relative z-10 max-w-2xl px-4 text-center text-(--color-text-on-primary) sm:px-6"
+            className="relative z-10 max-w-3xl px-4 text-center text-(--color-text-on-primary) sm:px-6"
           >
-            <p className="text-(length:--font-size-lg) font-[family-name:'Akronim'] sm:text-(length:--font-size-xl) md:text-(length:--font-size-2xl)">
+            <p className="text-(length:--font-size-xl) font-[family-name:'Akronim'] sm:text-(length:--font-size-2xl) md:text-(length:--font-size-3xl)">
               “{slide.quote}”
             </p>
-            <cite className="mt-(--padding-md) block text-(length:--font-size-sm) not-italic font-(family-name:--font-family-base) text-(--color-accent)">
+            <cite className="mt-(--padding-md) block text-(length:--font-size-md) not-italic font-(family-name:--font-family-base) text-(--color-accent)">
               — {slide.author}
             </cite>
           </motion.blockquote>

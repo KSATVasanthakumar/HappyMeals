@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import useScrolled from '../../hooks/useScrolled'
+import logo from '../../assets/images/Logo.png'
 
 const menuItems = [
   { label: 'Home', to: '/' },
@@ -31,9 +32,13 @@ function Header() {
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className="sticky top-0 z-50 grid h-20 grid-cols-[auto_1fr_auto] items-center gap-4 px-4 text-(--color-text-primary) sm:px-6 md:h-24"
     >
-      <span className="text-lg font-(--font-weight-bold) font-(family-name:--font-family-heading) sm:text-xl">
-        Happy Meal
-      </span>
+      <NavLink to="/" className="flex items-center gap-2 no-underline">
+        <img
+          src={logo}
+          alt="Happy Meals - Nutrition & Healthy"
+          className="h-16 w-auto sm:h-20"
+        />
+      </NavLink>
 
       <nav className="hidden justify-self-center md:block">
         <ul className="m-0 flex list-none gap-8 p-0">
