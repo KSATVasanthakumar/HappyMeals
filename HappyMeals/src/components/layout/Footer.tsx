@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import SocialIcons from '../common/SocialIcons'
 import logo from '../../assets/images/Logo.png'
+import { TAGLINE } from '../../constants/tagline'
 
 const links = [
   { label: 'Home', to: '/' },
@@ -71,15 +72,24 @@ function Footer() {
               Contact Us
             </h3>
             <div className="flex flex-col items-center gap-1 text-(length:--font-size-sm) text-(--color-text-on-primary)/80 sm:items-start">
-              <p className="m-0">Email - contact@happymeals.co.in</p>
-              <p className="m-0 mt-2">Happy Meals Pvt. Ltd.</p>
+              <p className="m-0">
+                Phone -{' '}
+                <a href="tel:+917259967777" className="text-(--color-text-on-primary)/80 no-underline hover:text-(--color-accent)">
+                  +91 7259967777
+                </a>
+              </p>
+              <p className="m-0">
+                Email -{' '}
+                <a href="mailto:contact@happymeals.co.in" className="text-(--color-text-on-primary)/80 no-underline hover:text-(--color-accent)">
+                  contact@happymeals.co.in
+                </a>
+              </p>
+              <p className="m-0 mt-2">Happy Meals</p>
               <p className="m-0">435, BOOHBCS 2nd Stage, 2nd Block,</p>
               <p className="m-0">Opp. Doddakallasandra Cricket Ground,</p>
               <p className="m-0">Narayana Nagar, Doddakallasandra,</p>
               <p className="m-0">Bangalore - 560062</p>
-              <p className="m-0">CIN - U55209KAXXXXXXXXXXXX</p>
-              <p className="m-0 mt-2">Contact Person - Mr. X</p>
-              <p className="m-0">Email - MrX@happymeals.co.in</p>
+             
             </div>
           </div>
 
@@ -94,7 +104,7 @@ function Footer() {
         <div className="h-px w-full bg-(--color-text-on-primary)/15" />
 
         <p className="text-center text-(length:--font-size-xs) text-(--color-text-on-primary)/70">
-          © {new Date().getFullYear()} Happy Meals. All rights reserved.
+          © {new Date().getFullYear()} Happy Meals — {TAGLINE} All rights reserved.
         </p>
       </div>
     </footer>

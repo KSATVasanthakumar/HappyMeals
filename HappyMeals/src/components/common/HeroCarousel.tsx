@@ -18,12 +18,12 @@ const slides = [
   },
   {
     image: slideImg3,
-    quote: 'From school cafeterias to banquets, we serve healthy at every scale.',
+    quote: 'From school lunchboxes to office cafeterias, we serve healthy at every scale.',
     author: 'Founder, Happy Meals',
   },
   {
     image: slideImg4,
-    quote: 'Corporate lunches to grand celebrations, catered with the same care for your health.',
+    quote: 'Every child deserves a nutritious meal — that\'s the care we cook with, every single day.',
     author: 'Head Chef, Happy Meals',
   },
 ]

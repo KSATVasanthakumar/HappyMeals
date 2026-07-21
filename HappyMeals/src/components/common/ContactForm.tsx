@@ -158,8 +158,8 @@ function ContactForm() {
           className={`${inputClasses} ${errors.category ? 'border-red-500' : 'border-(--color-border)'}`}
         >
           <option value="">Select a category</option>
-          <option value="Event Catering">Event Catering</option>
-          <option value="B2B Catering">B2B Catering</option>
+          <option value="School Meals">School Meals</option>
+          <option value="Office Meals">Office Meals</option>
           <option value="Other">Other</option>
         </select>
         {errors.category && (
@@ -196,7 +196,7 @@ function ContactForm() {
         <input
           id="eventType"
           type="text"
-          placeholder="e.g. Wedding, Corporate Lunch"
+          placeholder="e.g. School Meals, Office Lunch"
           {...register('eventType')}
           className={`${inputClasses} border-(--color-border)`}
         />

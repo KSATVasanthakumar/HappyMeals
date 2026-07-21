@@ -3,6 +3,7 @@ import PageHero from '../components/common/PageHero'
 import leadershipHeroImg from '../assets/images/pic-2.jpg'
 import ceoImg from '../assets/images/pic-3.jpg'
 import chefImg from '../assets/images/pic-4.jpg'
+import { TAGLINE } from '../constants/tagline'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -12,7 +13,7 @@ const fadeUp = {
 function Leadership() {
   return (
     <section id="leadership" className="bg-(--color-background)">
-      <PageHero title="Leadership" image={leadershipHeroImg} />
+      <PageHero title="Leadership" subtitle={TAGLINE} image={leadershipHeroImg} />
 
       <motion.div
         initial="hidden"
@@ -30,19 +31,19 @@ function Leadership() {
         </h2>
         <div className="h-px w-16 bg-(--color-accent)" />
         <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-          Happy Meals began with a simple observation: corporate catering had settled for convenience
-          over craft. Our founders, who had spent years in professional kitchens and event management,
-          believed that a business lunch or a milestone celebration deserved the same care as a
-          fine-dining table. What started as a small kitchen serving a handful of offices around
-          Bengaluru quickly grew as word spread about food that tasted homemade but looked and felt
-          premium. Every dish was built on two commitments: fresh, seasonal ingredients and menus that
-          could flex to any occasion, from a quiet breakfast meeting to a five-hundred-guest wedding.
-          Over time, that philosophy attracted a small, dedicated team of chefs, event coordinators,
-          and service staff who shared the same obsession with detail. Today, Happy Meals serves
-          corporate offices, private events, and celebrations across the city, but the founding idea
-          has never changed — food crafted with culinary artistry, cultural richness, and seasonal
-          freshness, delivered with the reliability a business can count on and the warmth a
-          celebration deserves.
+          Happy Meals began with a simple observation, made the hard way. Our founder had spent so
+          many years working in the food industry that food had become his whole life — yet his own
+          health kept suffering, and nothing he tried seemed to fix it. It took time, and a lot of
+          quiet reflection, to see that the problem was never how much he ate, but how little of it
+          actually nourished him. That realisation changed everything. He rebuilt his own plate
+          around fresh, seasonal, whole ingredients, felt the difference in his own body, and
+          couldn't stop thinking about how many schoolchildren were growing up on meals that filled
+          them up but never truly fed them. That's the idea Happy Meals was built on. What started as
+          one person fixing his own health has grown into a dedicated kitchen team who share the same
+          obsession with sourcing, balance, and detail. Today, Happy Meals serves schools and offices
+          across the city, but the founding idea has never changed — food crafted with real
+          nutrition, culinary care, and seasonal freshness, so every child and family we feed grows up
+          a little healthier.
         </p>
       </motion.div>
 
@@ -70,17 +71,17 @@ function Leadership() {
               </span>
             </div>
             <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
-              Mr. X founded Happy Meals with a vision to bring restaurant-grade hospitality into
-              everyday corporate dining and life's biggest celebrations. With a background spanning
-              hospitality management and large-scale event operations, he built the company around a
-              simple belief: consistency and warmth should never be casualties of scale. He has
-              personally overseen the company's growth from a single-kitchen operation to a trusted
-              partner for corporate offices, wedding parties, and private clients across Bengaluru.
-              Under his leadership, Happy Meals has invested heavily in sourcing, food safety, and
-              training, ensuring every plate served reflects the same standard whether it's for ten
-              guests or a thousand. Mr. X remains closely involved in menu direction and client
-              relationships, believing that a founder's attention to detail is what keeps a hospitality
-              brand honest as it grows.
+              Mr. X founded Happy Meals after years of working around food while his own health
+              quietly declined — a struggle that took him a long time to trace back to what was
+              actually on his plate. Once he turned that around for himself, he built Happy Meals
+              around a simple belief: nutrition and warmth should never be casualties of scale. He
+              has personally overseen the company's growth from a single-kitchen operation to a
+              trusted partner for schools and offices across Bengaluru. Under his leadership, Happy
+              Meals has invested heavily in sourcing, food safety, and training, ensuring every
+              plate served reflects the same standard whether it's for ten children or a thousand.
+              Mr. X remains closely involved in menu direction and client relationships, believing
+              that a founder's attention to detail is what keeps a nutrition brand honest as it
+              grows.
             </p>
           </motion.div>
 
@@ -112,9 +113,9 @@ function Leadership() {
               perform at scale without losing their soul. She works closely with the sourcing team to
               build seasonal menus around what's freshest, and personally trains the kitchen brigade on
               plating and consistency standards for every event. Known for tasting every new dish
-              before it reaches a client's table, Chef Y treats a hundred-cover banquet with the same
-              care as a single plate. Her philosophy is simple: food for a corporate lunch or a wedding
-              banquet should feel just as thoughtful as a meal cooked at home, only elevated.
+              before it reaches a client's table, Chef Y treats a school's daily lunch with the same
+              care as a single plate. Her philosophy is simple: food for a schoolchild or an office
+              desk should feel just as thoughtful as a meal cooked at home, only healthier.
             </p>
           </motion.div>
         </div>

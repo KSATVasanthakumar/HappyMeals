@@ -1,9 +1,23 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ChefLoaderIcon from './ChefLoaderIcon'
+import logo from '../../assets/images/Logo.png'
+import { TAGLINE } from '../../constants/tagline'
 
 interface DoorLoaderProps {
   onComplete: () => void
+}
+
+const tagline = TAGLINE
+
+const taglineContainer = {
+  hidden: {},
+  visible: { transition: { delayChildren: 0.4, staggerChildren: 0.09 } },
+}
+
+const taglineWord = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0 },
 }
 
 function DoorLoader({ onComplete }: DoorLoaderProps) {
@@ -38,14 +52,33 @@ function DoorLoader({ onComplete }: DoorLoaderProps) {
         >
           <ChefLoaderIcon progress={progress} />
 
-          <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+          <div className="flex flex-col items-center gap-2 sm:gap-3">
             <span className="text-[clamp(0.65rem,2.5vw,0.875rem)] uppercase tracking-[0.25em] text-(--color-accent) sm:tracking-[0.35em]">
               Welcome to
             </span>
-            <span className="text-[clamp(1.25rem,6vw,2.5rem)] font-(--font-weight-semibold) font-(family-name:--font-family-heading) tracking-wide text-(--color-text-on-primary)">
-              Happy Meals
-            </span>
+            <img
+              src={logo}
+              alt="Happy Meals - Nutrition & Healthy"
+              className="h-12 w-auto rounded-(--radius-lg) bg-(--color-text-on-primary) p-1.5 sm:h-16"
+            />
           </div>
+
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={taglineContainer}
+            className="mt-1 flex flex-wrap items-center justify-center gap-x-[0.35em] text-center text-[clamp(0.95rem,3.5vw,1.5rem)] font-[family-name:'Akronim'] text-(--color-text-on-primary) sm:mt-2"
+          >
+            {tagline.split(' ').map((word, index) => (
+              <motion.span
+                key={`${word}-${index}`}
+                variants={taglineWord}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>

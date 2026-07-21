@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView } from 'framer-motion'
 import PageHero from '../components/common/PageHero'
+import { TAGLINE } from '../constants/tagline'
 import aboutHeroImg from '../assets/images/pic-1.jpg'
 import storyImg from '../assets/images/pic-2.jpg'
 import splitImg from '../assets/images/pic-5.jpg'
@@ -23,7 +24,7 @@ const fadeRight = {
   visible: { opacity: 1, x: 0 },
 }
 
-const tagline = 'Nutrition-first menus, culinary artistry, seasonal freshness.'
+const tagline = TAGLINE
 
 function CalendarIcon() {
   return (
@@ -92,7 +93,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 function About() {
   return (
     <section id="about" className="bg-(--color-background)">
-      <PageHero title="About Us" image={aboutHeroImg} />
+      <PageHero title="About Us" subtitle={TAGLINE} image={aboutHeroImg} />
 
       <motion.div
         initial="hidden"
@@ -131,13 +132,17 @@ function About() {
             </h2>
             <div className="h-px w-16 bg-(--color-accent)" />
             <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              Happy Meals was founded in Bengaluru by a small team who believed catering shouldn't
-              come at the cost of nutrition. What began as a single kitchen serving nearby schools
-              and offices quickly grew into a name trusted for weddings, corporate luncheons, and
-              milestone celebrations across the city. From day one, the promise was simple — fresh,
-              seasonal ingredients, thoughtfully balanced menus, and a level of consistency that
-              scales from ten guests to a thousand. That founding promise still guides every dish
-              we plate today.
+              Happy Meals began with a simple, personal struggle. Our founder spent years working in
+              the food industry, surrounded by food every day, yet his own health kept slipping —
+              fatigue, poor digestion, nothing ever quite improving, no matter how many diets or
+              routines he tried. The turning point came from a quiet realisation: it was never about
+              eating less, it was about eating right. Once he rebuilt his own plate around whole
+              ingredients and real balance, and felt the difference himself, he couldn't unsee how
+              many people around him — especially schoolchildren — were growing up on food that
+              filled them up without ever nourishing them. Happy Meals was born from that one
+              conviction: that a healthy meal, done right, can change how a person feels, learns,
+              and grows. What started as one person fixing his own plate is now a kitchen dedicated
+              to doing the same for every child and family we serve.
             </p>
           </motion.div>
 
@@ -212,13 +217,13 @@ function About() {
             </h2>
             <div className="h-px w-16 bg-(--color-accent)" />
             <p className="text-justify text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              As a dedicated nutrition-first catering service, every Happy Meals kitchen treats a
-              hundred-cover banquet with the same care as a single plate. Our chefs source
+              As a dedicated nutrition-first meal service, every Happy Meals kitchen treats a
+              school lunch with the same care as a single home-cooked plate. Our chefs source
               seasonally, balance every menu around whole grains, fresh produce, and lean proteins,
-              and train relentlessly, so the same wholesome dish that impresses at a ten-person
-              breakfast meeting still lands perfectly at a five-hundred-guest wedding. It's this
-              discipline, built into our catering operations from day one, that lets us grow
-              without ever cutting corners on health or taste.
+              and train relentlessly, so the same wholesome dish that a child enjoys at school
+              still lands perfectly on an office desk at lunchtime. It's this discipline, built
+              into our kitchens from day one, that lets us grow without ever cutting corners on
+              health or taste.
             </p>
           </motion.div>
         </div>

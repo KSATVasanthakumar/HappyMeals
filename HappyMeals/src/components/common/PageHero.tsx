@@ -1,9 +1,10 @@
 interface PageHeroProps {
   title: string
+  subtitle?: string
   image?: string
 }
 
-function PageHero({ title, image }: PageHeroProps) {
+function PageHero({ title, subtitle, image }: PageHeroProps) {
   return (
     <section className="relative flex min-h-[320px] flex-col items-center justify-center gap-3 overflow-hidden px-4 py-14 text-center text-(--color-text-on-primary) sm:min-h-[420px] sm:px-6 sm:py-20 md:min-h-[520px]">
       {image && (
@@ -21,6 +22,11 @@ function PageHero({ title, image }: PageHeroProps) {
       <h1 className="relative z-10 text-[52px] font-(--font-weight-bold) font-[family-name:'Akronim'] text-white sm:text-[64px] md:text-[80px]">
         {title}
       </h1>
+      {subtitle && (
+        <p className="relative z-10 text-(length:--font-size-md) font-(--font-weight-medium) text-(--color-accent) sm:text-(length:--font-size-lg)">
+          {subtitle}
+        </p>
+      )}
     </section>
   )
 }

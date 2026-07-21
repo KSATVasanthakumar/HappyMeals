@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import HeroCarousel from '../components/common/HeroCarousel'
 import missionImg from '../assets/images/pic-4.jpg'
 import visionImg from '../assets/images/pic-3.jpg'
+import { TAGLINE } from '../constants/tagline'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -162,21 +163,21 @@ const clients = [
 const services = [
   {
     icon: <TiffinIcon />,
-    title: 'Corporate Catering',
+    title: 'School Meals for Kids',
     description:
-      'Balanced, nutrient-rich office meals and business luncheons, portioned mindfully and delivered on time, every time.',
+      'Nutritionist-planned tiffins and lunches for schoolchildren, balanced for growing bodies and portioned to keep young minds focused all day.',
   },
   {
     icon: <ClocheIcon />,
-    title: 'Event Catering',
+    title: 'Cafeteria Management',
     description:
-      'Weddings, private parties, and milestone celebrations, catered with wholesome menus built around your occasion and guest count.',
+      'End-to-end management of school and office cafeterias, with consistent quality, dietary variety, and strict hygiene standards.',
   },
   {
     icon: <CutleryTrayIcon />,
-    title: 'Cafeteria Management',
+    title: 'Everyday Office Meals',
     description:
-      'End-to-end management of school and corporate cafeterias, with consistent quality, dietary variety, and strict hygiene standards.',
+      'Balanced, nutrient-rich office meals delivered on time, every time — so healthy eating doesn\'t stop at the school gate.',
   },
 ]
 
@@ -215,17 +216,17 @@ function Home() {
         className="flex flex-col items-center justify-center gap-5 px-4 py-16 text-center sm:px-6 sm:py-20 md:py-28"
       >
         <h1 className="text-(length:--font-size-2xl) font-(--font-weight-bold) font-(family-name:--font-family-heading) sm:text-(length:--font-size-3xl)">
-          Nutrition & Healthy Catering, Crafted with Care
+          Nutrition & Healthy Meals, Crafted with Care
         </h1>
         <div className="h-px w-12 bg-(--color-accent)" />
         <p className="text-(length:--font-size-md) font-(--font-weight-medium) italic text-(--color-secondary)">
-          Wholesome food, thoughtfully balanced — for schools, weddings, and every occasion in between.
+          {TAGLINE}
         </p>
         <p className="max-w-prose text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-          Happy Meals Pvt. Ltd. is Bengaluru's dedicated nutrition-first catering partner, serving
-          schools, corporate offices, weddings, and celebrations with fresh, seasonal, and
-          well-balanced menus. Every dish is planned with the same question in mind — does this
-          nourish, as well as delight? That's the standard we cook to, at any scale.
+          Happy Meals is Bengaluru's dedicated nutrition-first meal partner, serving schools,
+          growing kids, and offices with fresh, seasonal, and well-balanced menus. Every dish is
+          planned with the same question in mind — does this nourish, as well as delight? That's
+          the standard we cook to, at any scale.
         </p>
       </motion.div>
 
@@ -346,9 +347,9 @@ function Home() {
               Beyond the Plate — The Happy Meals Standard
             </h2>
             <p className="text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              Our mission is to build a scalable, nutrition-first catering enterprise that
-              redefines healthy eating in India — meals that are as balanced and wholesome for a
-              school cafeteria as they are for a corporate boardroom or a wedding banquet.
+              Our mission is to build a scalable, nutrition-first meal enterprise that redefines
+              healthy eating in India — starting with a balanced, wholesome plate for every
+              schoolchild, and carrying that same standard into every office we feed.
             </p>
           </motion.div>
         </div>
@@ -381,10 +382,9 @@ function Home() {
               To Be India's Most Trusted Name in Healthy Catering
             </h2>
             <p className="text-(length:--font-size-md) leading-relaxed text-(--color-text-secondary)">
-              We envision a future where every school, corporate office, wedding, and celebration
-              across India turns to Happy Meals as the benchmark for nutritious, high-quality
-              catering — known equally for culinary excellence, balanced menus, and genuine care
-              for every guest we serve.
+              We envision a future where every school and office across India turns to Happy Meals
+              as the benchmark for nutritious, high-quality meals — known equally for culinary
+              excellence, balanced menus, and genuine care for every child and guest we serve.
             </p>
           </motion.div>
         </div>
@@ -447,11 +447,11 @@ function Home() {
           className="rounded-(--radius-xl) bg-(--color-primary) px-6 py-10 sm:px-10 sm:py-12"
         >
           <h2 className="text-(length:--font-size-xl) font-(--font-weight-semibold) font-(family-name:--font-family-heading) text-(--color-text-on-primary)">
-            Planning an Event or Daily Office Meals?
+            Planning Healthy School Meals or Daily Office Meals?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-(length:--font-size-md) leading-relaxed text-(--color-text-on-primary)/80">
-            Tell us about your occasion, headcount, and cuisine preferences, and we'll put together a
-            catering proposal built around it.
+            Tell us about your school, headcount, and dietary needs, and we'll put together a
+            nutrition-first meal proposal built around it.
           </p>
           <NavLink
             to="/contact"
