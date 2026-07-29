@@ -10,6 +10,7 @@ const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Leadership = lazy(() => import('./pages/Leadership'))
 const Contact = lazy(() => import('./pages/Contact'))
+const AharaNyayalaya = lazy(() => import('./pages/AharaNyayalaya'))
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/ahara-nyayalaya" element={<AharaNyayalaya />} />
         </Routes>
       </Suspense>
       <Footer />

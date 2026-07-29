@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ChefLoaderIcon from './ChefLoaderIcon'
 import logo from '../../assets/images/Logo.png'
+import heroImg from '../../assets/images/pic1.jpg'
 import { TAGLINE } from '../../constants/tagline'
 
 interface DoorLoaderProps {
@@ -24,22 +25,42 @@ function DoorLoader({ onComplete }: DoorLoaderProps) {
   const [progress, setProgress] = useState(0)
   const [doorsOpen, setDoorsOpen] = useState(false)
 
+  // Cosmetic progress bar — always runs to completion over `duration`,
+  // independent of whether the hero image has actually finished loading.
   useEffect(() => {
     const start = Date.now()
     const duration = 2200
 
     const interval = window.setInterval(() => {
       const elapsed = Date.now() - start
-      const next = Math.min(100, Math.round((elapsed / duration) * 100))
-      setProgress(next)
-
-      if (next >= 100) {
-        window.clearInterval(interval)
-        setDoorsOpen(true)
-      }
+      setProgress(Math.min(100, Math.round((elapsed / duration) * 100)))
     }, 30)
 
     return () => window.clearInterval(interval)
+  }, [])
+
+  // Real gate: don't open the doors until the hero image is ready AND the
+  // minimum splash duration has elapsed, whichever finishes last.
+  useEffect(() => {
+    const minDuration = new Promise<void>((resolve) => {
+      window.setTimeout(resolve, 2200)
+    })
+    const imageLoaded = new Promise<void>((resolve) => {
+      const image = new Image()
+      image.onload = () => resolve()
+      image.onerror = () => resolve()
+      image.src = heroImg
+      if (image.complete) resolve()
+    })
+
+    let cancelled = false
+    Promise.all([minDuration, imageLoaded]).then(() => {
+      if (!cancelled) setDoorsOpen(true)
+    })
+
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   return (

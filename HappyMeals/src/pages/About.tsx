@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView } from 'framer-motion'
 import PageHero from '../components/common/PageHero'
 import { TAGLINE } from '../constants/tagline'
-import aboutHeroImg from '../assets/images/pic-1.jpg'
-import storyImg from '../assets/images/pic-2.jpg'
-import splitImg from '../assets/images/pic-5.jpg'
-import galleryImg1 from '../assets/images/pic-6.jpg'
-import galleryImg2 from '../assets/images/pic-7.jpg'
-import galleryImg3 from '../assets/images/pic-8.jpg'
+import aboutHeroImg from '../assets/images/pic5.jpg'
+import storyImg from '../assets/images/pic11.jpg'
+import splitImg from '../assets/images/pic10.jpg'
+import galleryImg1 from '../assets/images/pic6.jpg'
+import galleryImg2 from '../assets/images/pic7.jpg'
+import galleryImg3 from '../assets/images/pic13.jpg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -91,9 +91,17 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 }
 
 function About() {
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
+  const markLoaded = (src: string) =>
+    setLoadedImages((current) => new Set(current).add(src))
+
   return (
     <section id="about" className="bg-(--color-background)">
-      <PageHero title="About Us" subtitle={TAGLINE} image={aboutHeroImg} />
+      <PageHero
+        title="About Us"
+        subtitle={`Nutrition and Healthy — ${TAGLINE}`}
+        image={aboutHeroImg}
+      />
 
       <motion.div
         initial="hidden"
@@ -146,16 +154,27 @@ function About() {
             </p>
           </motion.div>
 
-          <motion.img
-            src={storyImg}
-            alt="Happy Meals founding team preparing a catering spread"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeRight}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-            className="h-[320px] w-full rounded-(--radius-lg) object-cover shadow-lg sm:order-2 sm:h-[420px]"
-          />
+          <div className="relative h-[320px] w-full overflow-hidden rounded-(--radius-lg) shadow-lg sm:order-2 sm:h-[420px]">
+            {!loadedImages.has(storyImg) && (
+              <div className="absolute inset-0 flex items-center justify-center bg-(--color-surface)">
+                <span
+                  className="h-8 w-8 animate-spin rounded-full border-2 border-(--color-border) border-t-(--color-primary)"
+                  aria-label="Loading image"
+                />
+              </div>
+            )}
+            <motion.img
+              src={storyImg}
+              alt="Happy Meals founding team preparing a catering spread"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeRight}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+              onLoad={() => markLoaded(storyImg)}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
         </div>
       </div>
 
@@ -190,16 +209,27 @@ function About() {
 
       <div className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-24">
         <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-10">
-          <motion.img
-            src={splitImg}
-            alt="Happy Meals kitchen at work"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeLeft}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="h-[420px] w-full rounded-(--radius-lg) object-cover shadow-lg sm:h-[560px]"
-          />
+          <div className="relative h-[420px] w-full overflow-hidden rounded-(--radius-lg) shadow-lg sm:h-[560px]">
+            {!loadedImages.has(splitImg) && (
+              <div className="absolute inset-0 flex items-center justify-center bg-(--color-surface)">
+                <span
+                  className="h-8 w-8 animate-spin rounded-full border-2 border-(--color-border) border-t-(--color-primary)"
+                  aria-label="Loading image"
+                />
+              </div>
+            )}
+            <motion.img
+              src={splitImg}
+              alt="Happy Meals kitchen at work"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeLeft}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              onLoad={() => markLoaded(splitImg)}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
 
           <motion.div
             initial="hidden"
@@ -238,14 +268,27 @@ function About() {
           className="grid grid-cols-1 gap-5 sm:grid-cols-3"
         >
           {gallery.map((image) => (
-            <motion.img
+            <div
               key={image.src}
-              src={image.src}
-              alt={image.alt}
-              variants={fadeUp}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="h-64 w-full rounded-(--radius-lg) object-cover shadow-md"
-            />
+              className="relative h-64 w-full overflow-hidden rounded-(--radius-lg) shadow-md"
+            >
+              {!loadedImages.has(image.src) && (
+                <div className="absolute inset-0 flex items-center justify-center bg-(--color-surface)">
+                  <span
+                    className="h-8 w-8 animate-spin rounded-full border-2 border-(--color-border) border-t-(--color-primary)"
+                    aria-label="Loading image"
+                  />
+                </div>
+              )}
+              <motion.img
+                src={image.src}
+                alt={image.alt}
+                variants={fadeUp}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                onLoad={() => markLoaded(image.src)}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           ))}
         </motion.div>
       </div>

@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import PageHero from '../components/common/PageHero'
-import leadershipHeroImg from '../assets/images/pic-2.jpg'
-import ceoImg from '../assets/images/pic-3.jpg'
-import chefImg from '../assets/images/pic-4.jpg'
+import leadershipHeroImg from '../assets/images/pic6.jpg'
+import ceoImg from '../assets/images/founder.png'
 import { TAGLINE } from '../constants/tagline'
 
 const fadeUp = {
@@ -47,78 +46,42 @@ function Leadership() {
         </p>
       </motion.div>
 
-      <div className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-24">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeUp}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="flex flex-col items-center gap-5 text-left sm:items-start"
-          >
-            <img
-              src={ceoImg}
-              alt="Founder and CEO of Happy Meals"
-              className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
-            />
-            <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
-              <h3 className="text-(length:--font-size-lg) font-(--font-weight-semibold) font-(family-name:--font-family-heading) text-(--color-primary)">
-                Mr. X
-              </h3>
-              <span className="text-(length:--font-size-sm) font-(--font-weight-medium) tracking-wide text-(--color-secondary)">
-                Founder & CEO
-              </span>
-            </div>
-            <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
-              Mr. X founded Happy Meals after years of working around food while his own health
-              quietly declined — a struggle that took him a long time to trace back to what was
-              actually on his plate. Once he turned that around for himself, he built Happy Meals
-              around a simple belief: nutrition and warmth should never be casualties of scale. He
-              has personally overseen the company's growth from a single-kitchen operation to a
-              trusted partner for schools and offices across Bengaluru. Under his leadership, Happy
-              Meals has invested heavily in sourcing, food safety, and training, ensuring every
-              plate served reflects the same standard whether it's for ten children or a thousand.
-              Mr. X remains closely involved in menu direction and client relationships, believing
-              that a founder's attention to detail is what keeps a nutrition brand honest as it
-              grows.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeUp}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
-            className="flex flex-col items-center gap-5 text-left sm:items-start"
-          >
-            <img
-              src={chefImg}
-              alt="Head Chef of Happy Meals"
-              className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
-            />
-            <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
-              <h3 className="text-(length:--font-size-lg) font-(--font-weight-semibold) font-(family-name:--font-family-heading) text-(--color-primary)">
-                Chef Y
-              </h3>
-              <span className="text-(length:--font-size-sm) font-(--font-weight-medium) tracking-wide text-(--color-secondary)">
-                Head Chef
-              </span>
-            </div>
-            <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
-              Chef Y leads the Happy Meals kitchen, shaping every menu with a blend of classic Indian
-              technique and contemporary global influence. Trained in professional kitchens before
-              moving into large-format catering, she brings a chef's precision to menus that must
-              perform at scale without losing their soul. She works closely with the sourcing team to
-              build seasonal menus around what's freshest, and personally trains the kitchen brigade on
-              plating and consistency standards for every event. Known for tasting every new dish
-              before it reaches a client's table, Chef Y treats a school's daily lunch with the same
-              care as a single plate. Her philosophy is simple: food for a schoolchild or an office
-              desk should feel just as thoughtful as a meal cooked at home, only healthier.
-            </p>
-          </motion.div>
-        </div>
+      <div className="mx-auto max-w-2xl px-4 pb-16 sm:px-6 sm:pb-20 md:pb-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="flex flex-col items-center gap-5 text-center"
+        >
+          <img
+            src={ceoImg}
+            alt="Founder of Happy Meals"
+            className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
+          />
+          <div className="flex flex-col items-center gap-1 text-center">
+            <h3 className="text-(length:--font-size-lg) font-(--font-weight-semibold) font-(family-name:--font-family-heading) text-(--color-primary)">
+              Mr. M. Shivashankar
+            </h3>
+            <span className="text-(length:--font-size-sm) font-(--font-weight-medium) tracking-wide text-(--color-secondary)">
+              Founder
+            </span>
+          </div>
+          <p className="text-justify text-(length:--font-size-sm) leading-relaxed text-(--color-text-secondary)">
+            Mr. M. Shivashankar founded Happy Meals after years of working around food while his
+            own health quietly declined — a struggle that took him a long time to trace back to
+            what was actually on his plate. Once he turned that around for himself, he built Happy
+            Meals around a simple belief: nutrition and warmth should never be casualties of scale.
+            He has personally overseen the company's growth from a single-kitchen operation to a
+            trusted partner for schools and offices across Bengaluru. Under his leadership, Happy
+            Meals has invested heavily in sourcing, food safety, and training, ensuring every plate
+            served reflects the same standard whether it's for ten children or a thousand. Mr.
+            Shivashankar remains closely involved in menu direction and client relationships,
+            believing that a founder's attention to detail is what keeps a nutrition brand honest
+            as it grows.
+          </p>
+        </motion.div>
       </div>
     </section>
   )

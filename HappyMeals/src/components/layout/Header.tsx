@@ -9,6 +9,7 @@ const menuItems = [
   { label: 'About us', to: '/about' },
   { label: 'Leadership', to: '/leadership' },
   { label: 'Contact us', to: '/contact' },
+  { label: 'Ahara Nyayalaya', to: '/ahara-nyayalaya' },
 ]
 
 function Header() {
@@ -40,7 +41,7 @@ function Header() {
         />
       </NavLink>
 
-      <nav className="hidden justify-self-center md:block">
+      <nav className="hidden justify-self-end md:block">
         <ul className="m-0 flex list-none gap-8 p-0">
           {menuItems.map((item) => (
             <li key={item.label} className="relative py-1.5">
@@ -48,7 +49,7 @@ function Header() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `relative px-0.5 no-underline transition-colors hover:text-(--color-secondary) ${
+                  `relative px-0.5 text-(length:--font-size-sm) no-underline transition-colors hover:text-(--color-secondary) ${
                     isActive
                       ? 'text-(--color-primary) font-(--font-weight-semibold)'
                       : 'text-(--color-text-primary)'
@@ -75,7 +76,7 @@ function Header() {
 
       <div className="col-start-3 flex items-center gap-2 justify-self-end">
         <NavLink
-          to="/contact"
+          to="/contact#contact-form"
           className="hidden rounded-(--radius-full) bg-(--color-primary) px-5 py-2 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-text-on-primary) no-underline transition-colors hover:bg-(--color-secondary) md:inline-block"
         >
           Request Quote
@@ -142,7 +143,7 @@ function Header() {
               ))}
               <li>
                 <NavLink
-                  to="/contact"
+                  to="/contact#contact-form"
                   onClick={() => setMenuOpen(false)}
                   className="mt-2 block rounded-(--radius-full) bg-(--color-primary) px-3 py-3 text-center font-(--font-weight-semibold) text-(--color-text-on-primary) no-underline"
                 >

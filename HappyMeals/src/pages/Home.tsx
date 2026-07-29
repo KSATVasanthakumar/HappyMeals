@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import HeroCarousel from '../components/common/HeroCarousel'
-import missionImg from '../assets/images/pic-4.jpg'
-import visionImg from '../assets/images/pic-3.jpg'
+import missionImg from '../assets/images/pic8.jpg'
+import visionImg from '../assets/images/pic9.jpg'
 import { TAGLINE } from '../constants/tagline'
 
 const fadeUp = {

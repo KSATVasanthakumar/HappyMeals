@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import slideImg1 from '../../assets/images/pic-5.jpg'
-import slideImg2 from '../../assets/images/pic-6.jpg'
-import slideImg3 from '../../assets/images/pic-7.jpg'
-import slideImg4 from '../../assets/images/pic-8.jpg'
+import slideImg1 from '../../assets/images/pic1.jpg'
+import slideImg2 from '../../assets/images/pic2.jpg'
+import slideImg3 from '../../assets/images/pic3.jpg'
+import slideImg4 from '../../assets/images/pic4.jpg'
 
 const slides = [
   {
@@ -18,7 +18,7 @@ const slides = [
   },
   {
     image: slideImg3,
-    quote: 'From school lunchboxes to office cafeterias, we serve healthy at every scale.',
+    quote: 'From school lunchboxes to office cafeterias, we serve Nutrition and Healthy meals at every scale.',
     author: 'Founder, Happy Meals',
   },
   {
@@ -30,11 +30,12 @@ const slides = [
 
 function HeroCarousel() {
   const [index, setIndex] = useState(0)
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     const interval = window.setInterval(() => {
       setIndex((current) => (current + 1) % slides.length)
-    }, 4000)
+    }, 8000)
 
     return () => window.clearInterval(interval)
   }, [])
@@ -52,9 +53,20 @@ function HeroCarousel() {
           transition={{ duration: 0.8, ease: 'easeInOut' }}
           className="absolute inset-0 flex items-center justify-center overflow-hidden"
         >
+          {!loadedImages.has(slide.image) && (
+            <div className="absolute inset-0 flex items-center justify-center bg-(--color-primary)">
+              <span
+                className="h-10 w-10 animate-spin rounded-full border-2 border-(--color-text-on-primary)/25 border-t-(--color-accent)"
+                aria-label="Loading image"
+              />
+            </div>
+          )}
           <img
             src={slide.image}
             alt=""
+            onLoad={() =>
+              setLoadedImages((current) => new Set(current).add(slide.image))
+            }
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
@@ -64,7 +76,7 @@ function HeroCarousel() {
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
             className="relative z-10 max-w-3xl px-4 text-center text-(--color-text-on-primary) sm:px-6"
           >
-            <p className="text-(length:--font-size-xl) font-[family-name:'Akronim'] sm:text-(length:--font-size-2xl) md:text-(length:--font-size-3xl)">
+            <p className="text-(length:--font-size-xl) leading-relaxed font-[family-name:'Akronim'] sm:text-(length:--font-size-2xl) md:text-(length:--font-size-3xl)">
               “{slide.quote}”
             </p>
             <cite className="mt-(--padding-md) block text-(length:--font-size-md) not-italic font-(family-name:--font-family-base) text-(--color-accent)">

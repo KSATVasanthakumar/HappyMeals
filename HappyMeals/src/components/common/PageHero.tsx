@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 interface PageHeroProps {
   title: string
   subtitle?: string
@@ -5,14 +7,27 @@ interface PageHeroProps {
 }
 
 function PageHero({ title, subtitle, image }: PageHeroProps) {
+  const [imageLoaded, setImageLoaded] = useState(false)
+
   return (
     <section className="relative flex min-h-[320px] flex-col items-center justify-center gap-3 overflow-hidden px-4 py-14 text-center text-(--color-text-on-primary) sm:min-h-[420px] sm:px-6 sm:py-20 md:min-h-[520px]">
       {image && (
-        <img
-          src={image}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        <>
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-(--color-primary)">
+              <span
+                className="h-10 w-10 animate-spin rounded-full border-2 border-(--color-text-on-primary)/25 border-t-(--color-accent)"
+                aria-label="Loading image"
+              />
+            </div>
+          )}
+          <img
+            src={image}
+            alt=""
+            onLoad={() => setImageLoaded(true)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </>
       )}
       {image ? (
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/50" />

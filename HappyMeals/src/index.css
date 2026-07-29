@@ -28,13 +28,11 @@ html {
   flex-direction: column;
   box-sizing: border-box;
   background: var(--color-background);
-  overflow-x: clip;
 }
 
 body {
   margin: 0;
   background: var(--color-background);
-  overflow-x: hidden;
 }
 
 @layer base {

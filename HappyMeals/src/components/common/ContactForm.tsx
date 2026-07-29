@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000'
 
 interface FormValues {
   name: string
@@ -37,12 +40,15 @@ const inputBaseClasses =
 const inputClasses = `w-full ${inputBaseClasses}`
 
 function ContactForm() {
+  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [submitSucceeded, setSubmitSucceeded] = useState(false)
+
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    formState: { errors, isSubmitSuccessful, isValid },
+    formState: { errors, isSubmitting, isValid },
   } = useForm<FormValues>({
     mode: 'onChange',
     defaultValues: {
@@ -65,11 +71,24 @@ function ContactForm() {
   const otherCategory = watch('otherCategory')
   const address = watch('address')
 
-  const onSubmit = () => {
-    // No backend exists yet; this simply confirms a valid submission.
+  const onSubmit = async (values: FormValues) => {
+    setSubmitError(null)
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+      if (!response.ok) {
+        throw new Error('Failed to send request')
+      }
+      setSubmitSucceeded(true)
+    } catch {
+      setSubmitError('Something went wrong sending your request. Please try again or call us directly.')
+    }
   }
 
-  if (isSubmitSuccessful) {
+  if (submitSucceeded) {
     return (
       <div className="flex flex-col items-center gap-2 rounded-(--radius-lg) border border-(--color-border) bg-(--color-surface) px-6 py-10 text-center shadow-sm">
         <h2 className="text-(length:--font-size-xl) font-(--font-weight-semibold) font-(family-name:--font-family-heading) text-(--color-primary)">
@@ -80,7 +99,10 @@ function ContactForm() {
         </p>
         <button
           type="button"
-          onClick={() => reset()}
+          onClick={() => {
+            reset()
+            setSubmitSucceeded(false)
+          }}
           className="mt-2 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-secondary) underline"
         >
           Submit another request
@@ -107,6 +129,8 @@ function ContactForm() {
             required: 'Name is required.',
             minLength: { value: 2, message: 'Name must be at least 2 characters.' },
             maxLength: { value: 100, message: 'Name must not exceed 100 characters.' },
+            validate: (value) =>
+              value.trim().length >= 2 || 'Name must be at least 2 characters.',
           })}
           className={`${inputClasses} ${errors.name ? 'border-red-500' : 'border-(--color-border)'}`}
         />
@@ -277,16 +301,17 @@ function ContactForm() {
       <div className="flex flex-col items-start gap-1 sm:col-span-3">
         <button
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid || isSubmitting}
           className="rounded-(--radius-full) bg-(--color-primary) px-6 py-3 text-(length:--font-size-sm) font-(--font-weight-semibold) text-(--color-text-on-primary) transition-colors hover:enabled:bg-(--color-secondary) disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Get a Quote
+          {isSubmitting ? 'Sending...' : 'Get a Quote'}
         </button>
         {!isValid && (
           <span className="text-(length:--font-size-xs) text-(--color-text-secondary)">
             Please fill in all required fields (marked with *) correctly to enable this button.
           </span>
         )}
+        {submitError && <span className="text-(length:--font-size-xs) text-red-600">{submitError}</span>}
       </div>
     </form>
   )
