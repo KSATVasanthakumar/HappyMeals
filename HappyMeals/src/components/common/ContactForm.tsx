@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000'
 
@@ -46,7 +46,7 @@ function ContactForm() {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     reset,
     formState: { errors, isSubmitting, isValid },
   } = useForm<FormValues>({
@@ -64,12 +64,11 @@ function ContactForm() {
     },
   })
 
-  // react-hook-form's watch() can't be proven stable for the compiler, but nothing here
-  // is passed to a memoized child/hook, so there's no staleness risk to guard against.
-  // eslint-disable-next-line react-hooks/incompatible-library
-  const category = watch('category')
-  const otherCategory = watch('otherCategory')
-  const address = watch('address')
+  // useWatch subscribes only to the named field, so typing in unrelated fields
+  // (name, email, phone, pax...) doesn't re-render this whole form.
+  const category = useWatch({ control, name: 'category' })
+  const otherCategory = useWatch({ control, name: 'otherCategory' })
+  const address = useWatch({ control, name: 'address' })
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null)

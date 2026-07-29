@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ChefLoaderIcon from './ChefLoaderIcon'
 import logo from '../../assets/images/Logo.png'
@@ -20,6 +20,42 @@ const taglineWord = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0 },
 }
+
+// Static across the whole progress animation — memoized so the ~30ms progress
+// ticks in DoorLoader don't re-render the logo/tagline on every frame.
+const LoaderBrand = memo(function LoaderBrand() {
+  return (
+    <>
+      <div className="flex flex-col items-center gap-2 sm:gap-3">
+        <span className="text-[clamp(0.65rem,2.5vw,0.875rem)] uppercase tracking-[0.25em] text-(--color-accent) sm:tracking-[0.35em]">
+          Welcome to
+        </span>
+        <img
+          src={logo}
+          alt="Happy Meals - Nutrition & Healthy"
+          className="h-12 w-auto rounded-(--radius-lg) bg-(--color-text-on-primary) p-1.5 sm:h-16"
+        />
+      </div>
+
+      <motion.p
+        initial="hidden"
+        animate="visible"
+        variants={taglineContainer}
+        className="mt-1 flex flex-wrap items-center justify-center gap-x-[0.35em] text-center text-[clamp(0.95rem,3.5vw,1.5rem)] font-[family-name:'Akronim'] text-(--color-text-on-primary) sm:mt-2"
+      >
+        {tagline.split(' ').map((word, index) => (
+          <motion.span
+            key={`${word}-${index}`}
+            variants={taglineWord}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
+            {word}
+          </motion.span>
+        ))}
+      </motion.p>
+    </>
+  )
+})
 
 function DoorLoader({ onComplete }: DoorLoaderProps) {
   const [progress, setProgress] = useState(0)
@@ -72,34 +108,7 @@ function DoorLoader({ onComplete }: DoorLoaderProps) {
           transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
         >
           <ChefLoaderIcon progress={progress} />
-
-          <div className="flex flex-col items-center gap-2 sm:gap-3">
-            <span className="text-[clamp(0.65rem,2.5vw,0.875rem)] uppercase tracking-[0.25em] text-(--color-accent) sm:tracking-[0.35em]">
-              Welcome to
-            </span>
-            <img
-              src={logo}
-              alt="Happy Meals - Nutrition & Healthy"
-              className="h-12 w-auto rounded-(--radius-lg) bg-(--color-text-on-primary) p-1.5 sm:h-16"
-            />
-          </div>
-
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={taglineContainer}
-            className="mt-1 flex flex-wrap items-center justify-center gap-x-[0.35em] text-center text-[clamp(0.95rem,3.5vw,1.5rem)] font-[family-name:'Akronim'] text-(--color-text-on-primary) sm:mt-2"
-          >
-            {tagline.split(' ').map((word, index) => (
-              <motion.span
-                key={`${word}-${index}`}
-                variants={taglineWord}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+          <LoaderBrand />
         </motion.div>
       )}
     </AnimatePresence>

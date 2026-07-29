@@ -325,6 +325,7 @@ function Home() {
           <motion.img
             src={missionImg}
             alt="Happy Meals nutrition team plating a balanced meal"
+            loading="lazy"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -360,6 +361,7 @@ function Home() {
           <motion.img
             src={visionImg}
             alt="Happy Meals' vision for healthy catering across India"
+            loading="lazy"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}

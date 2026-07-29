@@ -58,6 +58,7 @@ function Leadership() {
           <img
             src={ceoImg}
             alt="Founder of Happy Meals"
+            loading="lazy"
             className="h-64 w-64 rounded-(--radius-lg) object-cover shadow-md"
           />
           <div className="flex flex-col items-center gap-1 text-center">

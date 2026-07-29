@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { animate, motion, useInView } from 'framer-motion'
+import { animate, motion, useInView, useMotionValue, useTransform } from 'framer-motion'
 import PageHero from '../components/common/PageHero'
 import { TAGLINE } from '../constants/tagline'
 import aboutHeroImg from '../assets/images/pic5.jpg'
@@ -68,26 +68,18 @@ const gallery = [
 function Counter({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.6 })
-  const [count, setCount] = useState(0)
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (value) => `${Math.round(value)}${suffix}`)
 
   useEffect(() => {
     if (!isInView) return
 
-    const controls = animate(0, target, {
-      duration: 1.8,
-      ease: 'easeOut',
-      onUpdate: (value) => setCount(Math.round(value)),
-    })
+    const controls = animate(count, target, { duration: 1.8, ease: 'easeOut' })
 
     return () => controls.stop()
-  }, [isInView, target])
+  }, [isInView, target, count])
 
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  )
+  return <motion.span ref={ref}>{rounded}</motion.span>
 }
 
 function About() {
@@ -166,6 +158,7 @@ function About() {
             <motion.img
               src={storyImg}
               alt="Happy Meals founding team preparing a catering spread"
+              loading="lazy"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -221,6 +214,7 @@ function About() {
             <motion.img
               src={splitImg}
               alt="Happy Meals kitchen at work"
+              loading="lazy"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -283,6 +277,7 @@ function About() {
               <motion.img
                 src={image.src}
                 alt={image.alt}
+                loading="lazy"
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 onLoad={() => markLoaded(image.src)}
