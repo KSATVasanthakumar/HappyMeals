@@ -79,10 +79,12 @@ function ContactForm() {
         body: JSON.stringify(values),
       })
       if (!response.ok) {
-        throw new Error('Failed to send request')
+        const body = await response.text().catch(() => '')
+        throw new Error(`Failed to send request: ${response.status} ${response.statusText} ${body}`)
       }
       setSubmitSucceeded(true)
-    } catch {
+    } catch (err) {
+      console.error('Contact form submission failed:', err)
       setSubmitError('Something went wrong sending your request. Please try again or call us directly.')
     }
   }
